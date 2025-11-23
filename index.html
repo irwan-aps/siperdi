@@ -88,9 +88,10 @@
 }
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 0fr); /* 4 kolom */
-    gap: 5px; 
+    grid-template-columns: auto auto auto auto; /* 4 kolom */
     height: 70vh;  
+    grid-template-rows: 120px auto 120px auto 120px;
+    grid-gap:50px;
 }
 .product-card {
     background-color: #fff;
@@ -199,6 +200,7 @@
     </div>
 </body>
   </html>
+
 
 
 

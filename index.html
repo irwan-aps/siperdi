@@ -6,54 +6,200 @@
     <title>Perpustakaan Digital</title>
 </head>
 <style>
-  *,html{margin: 0px; padding: 0px;}
-  body{background-image: url(blue.jpg); 
-    background-repeat: no-repeat; width:100%; background-attachment: fixed;
-  background-size: cover; background-attachment: fixed;}
-  .satu{background-image: url(head.jpeg); width:100%; color: white;
-  height: 15vh;
-  justify-items: center;
-  align-content: center;
-background-repeat: no-repeat;
-background-size: cover;}
-  .dua{text-decoration: none; color:black; margin-left: 30px; margin-top: 15px; font-size: 20px;}
+ body {
+    font-family: sans-serif;
+    margin: 5px;
+    padding: 5px;
+    background-color: #f1f1f1;
+    color: #333;
+}
+.container {
+    display: flex;
+    width:0;
+    height:120vh;
+    float: none;
+}
+/* SIDEBAR STYLING */
+.sidebar {
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 0;
+    float:none;
+    font-size: 0.8em;
+}
+.sidebar-header {
+    background-color: #555;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 0.8em;
+     width:20vh;
+}
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.menu-list li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333; font-size: 15px;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+     font-size: 0.9em;
+}
+.menu-list li a:hover {
+    background-color: #f0f0f0;
+}
+/* MAIN CONTENT STYLING */
+.main-content {
+    flex-grow: 2;
+    padding: 5px;
+    width: auto;
+}
+/* BANNER STYLING */
+.banner-area {
+    position: relative;
+    margin-bottom: 30px;
+    /* Asumsi banner punya tinggi tetap */
+    height: 30vh; 
+    overflow: hidden;
+    background-color: #ccc;
+    width: auto;
+}
+.banner-image {
+    width: auto;
+    height: 30vh;
+}
+.banner-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 0,7em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+/* PRODUCT GRID STYLING */
+.section-title {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 0fr); /* 4 kolom */
+    gap: 5px; 
+    height: 70vh;  
+}
+.product-card {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 70px;
+    height: 100px;
+}
+.product-image {
+    width: 50%;
+    height: auto;
+    max-width: 100px; /* Sesuaikan ukuran gambar */
+    display: block;
+    margin: 0 auto 10px auto;
+}
+.product-name {
+    font-size: 0.9em;
+    margin: 0 0 5px 0;
+}
 </style>
 </body>
-<!-- header -->
-<div class="satu">
-<h3>KUMPULAN NOVEL FORMAT PDF</h3>
-</div>
-<!-- header end -->
-<!-- Isi -->
-<div class="dua">
-<ol>
-  <li>Novel Islami</li>
-  <ul type="square" style="margin-left: 15px;">
-    <li><a href="Asiyah, Sang Mawar Gurun Firaun.pdf" style="text-decoration: underline; color: black;" target="_blank">Sang Mawar Gurun</a></li>
-    <li><a href="Fatimah Az Zahrah.pdf" style="text-decoration: underline; color: black;" target="_blank">Kerinduan dari Karbala</a></li>
-    <li><a href="Khadijah Ketika Rahasia  Mim Tersingkap.pdf" style="text-decoration:underline; color: black;" target="_blank">Ketika Rahasia Mim terungkap</a></li>
-    </ul><br>
-   <li>Novel Fiksi</li>
-  <ul type="square" style="margin-left: 15px;">
-    <li><a href="Negeri Para Bedebah.pdf" style="text-decoration: underline; color: black;" target="_blank">Negeri Para Bedebah</a></li>
-    <li><a href="Negeri di Ujung Tanduk.pdf" style="text-decoration: underline; color: black;">Negeri di Ujung Tanduk</a></li>
-  </ul><br>
-  <li>Novel Fiksi Ilmiah</li>
-  <ul type="square" style="margin-left: 15px;">
-    <li><a href="Deception Point.pdf" style="text-decoration: underline; color: black;" target="_blank">Deception Point</a></li>
-    <li><a href="Digital Fortress.pdf" style="text-decoration: underline; color: black;" target="_blank">Digital Fortress</a></li>
-    </ul><br>
-  <li>Novel Remaja</li>
-  <ul type="square" style="margin-left: 15px;">
-    <li><a href="Bila.pdf" style="text-decoration: underline; color: black;" target="_blank">Bila</a></li>
-    <li><a href="The Rising Star.pdf" style="text-decoration: underline; color: black;" target="_blank">The Rising Star</a></li>
-    
-  </ul>
-</ol><br>
-</div><br><br>
-<!-- Isi end -->
+<div class="container">
+        <!-- SIDEBAR (Menu Kategori) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                Kategori Islami
+            </div>
+            <ul class="menu-list">
+                <li><a href="Asiyah, Sang Mawar Gurun Firaun.pdf" target="blank">Sang Mawar Gurun</a></li>
+                <li><a href="Khadijah Ketika Rahasia  Mim Tersingkap.pdf" target="blank">Ketika Rahasia Mim Terungkap</a></li>
+                <li><a href="Maryam Bunda Suci Sang Nabi.pdf" target="blank">Bunda Suci Sang Nabi</a></li>
+                <li><a href="Fatimah Az Zahrah.pdf" target="blank">Kerinduan dari Karbala</a></li>
+                </ul>
+                <div class="sidebar-header">
+                Kategori Fiksi Ilmiah
+            </div>
+            <ul class="menu-list">
+                <li><a href="Deception Point.pdf" target="blank">Deception Point</a></li>
+                <li><a href="Digital Fortress.pdf" target="blank">Digital Fortress</a></li>
+                <div class="sidebar-header">
+                Kategori Remaja
+            </div>
+            <ul class="menu-list"></ul>
+                <li><a href="bila.jpg" target="blank">Bila</a></li>
+                <li><a href="The Rising Star.pdf" target="blank">The Rising Star</a></li>
+                <!-- Tambahkan lebih banyak item menu di sini -->
+            </ul>
+        </aside>
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <!-- HEADER BANNER/SLIDER -->
+            <div class="banner-area">
+                <img src="header.jpg" alt="Banner Angga AR Indonesia" class="banner-image">
+                <div class="banner-text">
+                    IRWAN WAHYUDI
+                </div>
+            </div>
+            <h4 class="section-title">Tampilan Cover</h4>
+            <!-- PRODUCT GRID -->
+            <div class="product-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <img src="asiah.jpg" alt="Produk 1" class="product-image">
+                    <p class="product-name">Sang Mawar Gurun</p>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <img src="kho.jpg" alt="Produk 2" class="product-image">
+                    <p class="product-name">Ketika Rahasia Mim</p>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <img src="maryam.jpg" alt="Produk 3" class="product-image">
+                    <p class="product-name">Bunda Suci Sang Nabi</p>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <img src="fatimah.jpg" alt="Produk 4" class="product-image">
+                    <p class="product-name">Kerinduan dari Karbala</p>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <img src="deception.jpg" alt="Produk 4" class="product-image">
+                   <p class="product-name">Deception Point</p>
+                </div>
+                <!-- Product Card 6 -->
+                <div class="product-card">
+                    <img src="digital.jpg" alt="Produk 4" class="product-image">
+                    <p class="product-name">Digital Fortress</p>
+                </div>
+                <!-- Product Card 7 -->
+                <div class="product-card">
+                    <img src="bila.jpg" alt="Produk 4" class="product-image">
+                    <p class="product-name">Bila</p>
+                </div>
+                <!-- Product Card 8 -->
+                <div class="product-card">
+                    <img src="the rising.jpg" alt="Produk 4" class="product-image">
+                    <p class="product-name">The Rising Star</p>
+                </div>
+                <!-- Tambahkan lebih banyak kartu produk di sini -->
+            </div>
+        </main>
+    </div>
 </body>
   </html>
+
 
 
 

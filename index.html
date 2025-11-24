@@ -1,230 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan Digital</title>
+    <title>Sidebar Responsif</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <style>
- body {
-    font-family: sans-serif;
-    margin: 5px;
-    padding: 5px;
-    background-color: #f1f1f1;
-    color: #333;
-}
-.container {
-    display: flex;
-    width:0
-}
-/* SIDEBAR STYLING */
-.sidebar {
-  width: 200px; /* Sesuaikan lebar sidebar */
-  height: auto; /* Sesuaikan tinggi sidebar */
-  padding: 15px;
-  box-sizing: border-box; /* Agar padding termasuk dalam width */
-  background-color: #fff;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  padding: 0;
-  float:none;
-  font-size: 0.8em;   
-}
-.sidebar-header {
-    background-color: #555;
-    color: white;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 0.8em;
-     width:20vh;
-}
-.menu-list {
-    list-style-type: none;
-    padding: 0;
+    * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.menu-list li a {
-    display: block;
-    padding: 10px 15px;
-    color: #333; font-size: 15px;
-    text-decoration: none;
-    border-bottom: 1px solid #eee;
-     font-size: 0.9em;
+
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
 }
-.menu-list li a:hover {
-    background-color: #f0f0f0;
-}
-/* MAIN CONTENT STYLING */
-.main-content {
-    flex-grow: 2;
-    padding: 5px;
-    width: auto;
-}
-/* BANNER STYLING */
-.banner-area {
-    position: relative;
-    margin-bottom: 30px;
-    /* Asumsi banner punya tinggi tetap */
-    height: 30vh; 
-    overflow: hidden;
-    background-color: #ccc;
-    width: auto;
-}
-.banner-image {
-    width: auto;
-    height: 30vh;
-}
-.banner-text {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+
+/* Header */
+header {
+    background-color: rgb(54, 54, 219);
     color: white;
-    font-size: 0,7em;
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
 }
-/* PRODUCT GRID STYLING */
-.section-title {
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+
+/* Tombol toggle menu (hanya terlihat di mobile) */
+#menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    /* Secara default, sembunyikan di desktop */
+    display: block; 
+    
 }
-.product-grid {
-    display: grid;
-    grid-template-columns: auto auto auto auto; /* 4 kolom */
-    height: 70vh;  
-    grid-template-rows: 150px auto 150px auto 150px;
-    grid-gap:20px;
+
+/* Wrapper Halaman */
+.page-wrapper {
+    display: flex;
 }
-.product-card {
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-    width: 70px;
-    height: 100px;
+
+/* Sidebar Styling */
+aside#sidebar {
+    width: 250px;
+    background-color: rgb(218, 213, 213);
+    color: white;
+    height: calc(100vh - 50px); /* Menyesuaikan tinggi layar dikurangi tinggi header */
+    padding-top: px;
+    position: fixed; /* Membuat sidebar tetap di tempat saat scrolling konten utama */
+    transition: transform 0.3s ease;
 }
-.product-image {
-    width: 50%;
-    height: auto;
-    max-width: 100px; /* Sesuaikan ukuran gambar */
+
+aside#sidebar nav ul {
+    list-style: none;
+    
+}
+
+aside#sidebar nav ul li a {
+    color: rgb(19, 16, 16);
+    text-decoration: none;
+    padding: 10px 20px;
     display: block;
-    margin: 0 auto 10px auto;
+    border-bottom: 1px solid #443f3f;
+    transition: background-color 0.2s;
+    
 }
-.product-name {
-    font-size: 0.9em;
-    margin: 0 0 5px 0;
+
+aside#sidebar nav ul li a:hover {
+    background-color: #e9e0e0;
 }
+
+/* Konten Utama Styling */
+main {
+    flex-grow: 1;
+    padding: 20px;
+    /* Penting: desktop content needs padding to avoid hiding under the fixed sidebar */
+    margin-left: 250px; 
+    background-image: url(literate.jpg);
+    height: calc(100vh - 50px);
+    background-repeat:no-repeat ;
+    background-size: cover;
+    color:white;
+}
+
+/* --- Responsiveness --- */
+
+/* Mobile View (Default) */
+/* Di mobile, sidebar tersembunyi secara default */
+aside#sidebar {
+    transform: translateX(-100%);
+    z-index: 10; /* Pastikan di atas konten lain */
+}
+
+/* Saat kelas 'active' ditambahkan JavaScript, sidebar muncul */
+aside#sidebar.active {
+    transform: translateX(0);
+}
+
+/* Di mobile, konten utama tidak memiliki margin kiri */
+main {
+    margin-left: 0;
+}
+
+
+/* Desktop View (Min-width 768px) */
+@media (min-width: 768px) {
+    /* Di desktop, sembunyikan tombol toggle */
+    #menu-toggle {
+        display: none;
+    }
+
+    /* Di desktop, sidebar selalu terlihat */
+    aside#sidebar {
+        transform: translateX(0);
+    }
+
+    /* Di desktop, konten utama memiliki margin untuk menghindari tumpang tindih */
+    main {
+        margin-left: 250px;
+    }
+}
+.title{
+     background-color: #555;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1em;
+}
+.gbr{height: 50px;}
 </style>
-</body>
-<div class="container">
-        <!-- SIDEBAR (Menu Kategori) -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                Kategori Islami
-            </div>
-            <ul class="menu-list">
+<body>
+    <!-- Header/Navigasi Utama -->
+    <header>
+        <button id="menu-toggle" aria-label="Buka Menu">☰</button>
+        <h1>SIPERDI</h1>
+    </header>
+
+    <!-- Struktur Utama Halaman -->
+    <div class="page-wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="title">Kategori Islami</div>
+            <nav>
+                <ul>
                 <li><a href="Asiyah, Sang Mawar Gurun Firaun.pdf" target="blank">Sang Mawar Gurun</a></li>
                 <li><a href="Khadijah Ketika Rahasia  Mim Tersingkap.pdf" target="blank">Ketika Rahasia Mim Tersingkap</a></li>
                 <li><a href="Maryam Bunda Suci Sang Nabi.pdf" target="blank">Bunda Suci Sang Nabi</a></li>
                 <li><a href="Fatimah Az Zahrah.pdf" target="blank">Kerinduan dari Karbala</a></li>
                 </ul>
-                <div class="sidebar-header">
-                Kategori Fiksi Ilmiah
-            </div>
-            <ul class="menu-list">
-                <li><a href="Deception Point.pdf" target="blank">Deception Point</a></li>
+            </nav>
+            <div class="title">Kategori Fiksi Ilmiah</div>
+            <nav>
+                <ul>
+                 <li><a href="Deception Point.pdf" target="blank">Deception Point</a></li>
                 <li><a href="Digital Fortress.pdf" target="blank">Digital Fortress</a></li>
-                <div class="sidebar-header">
-                Kategori Remaja
-            </div>
-            <ul class="menu-list"></ul>
-                <li><a href="Bila.pdf" target="blank">Bila</a></li>
-                <li><a href="The Rising Star.pdf" target="blank">The Rising Star</a></li>
-                <!-- Tambahkan lebih banyak item menu di sini -->
+                 <li><a href="Davinci Code.pdf" target="blank">Davinci Code</a></li>
+                </ul>
+            </nav>
+            <div class="title">Kategori Remaja</div>
+            <nav>
+                <ul>
+                <li><a href="I Love You Dearly.pdf" target="blank">I Love You Dearly</a></li>
+                <li><a href="Sepotong Hati Yang Baru.pdf" target="blank">Sepotong Hati yang Baru</a></li>
+                <li><a href="Bulan.pdf" target="blank">Bulan</a></li>
             </ul>
+            </nav>
         </aside>
-        <!-- MAIN CONTENT AREA -->
-        <main class="main-content">
-            <!-- HEADER BANNER/SLIDER -->
-            <div class="banner-area">
-                <img src="header.jpg" alt="Banner Angga AR Indonesia" class="banner-image">
-                <div class="banner-text">
-                    IRWAN WAHYUDI
-                </div>
-            </div>
-            <h4 class="section-title">Tampilan Cover</h4>
-            <!-- PRODUCT GRID -->
-            <div class="product-grid">
-                <!-- Product Card 1 -->
-                <div class="product-card">
-                    <img src="asiah.jpg" alt="Produk 1" class="product-image">
-                    <p class="product-name">Sang Mawar Gurun</p>
-                </div>
-                <!-- Product Card 2 -->
-                <div class="product-card">
-                    <img src="kho.jpg" alt="Produk 2" class="product-image">
-                    <p class="product-name">Ketika Rahasia Mim</p>
-                </div>
-                <!-- Product Card 3 -->
-                <div class="product-card">
-                    <img src="maryam.jpg" alt="Produk 3" class="product-image">
-                    <p class="product-name">Bunda Suci Sang Nabi</p>
-                </div>
-                <!-- Product Card 4 -->
-                <div class="product-card">
-                    <img src="fatimah.jpg" alt="Produk 4" class="product-image">
-                    <p class="product-name">Kerinduan dari Karbala</p>
-                </div>
-                <!-- Product Card 5 -->
-                <div class="product-card">
-                    <img src="deception.jpg" alt="Produk 4" class="product-image">
-                   <p class="product-name">Deception Point</p>
-                </div>
-                <!-- Product Card 6 -->
-                <div class="product-card">
-                    <img src="digital.jpg" alt="Produk 4" class="product-image">
-                    <p class="product-name">Digital Fortress</p>
-                </div>
-                <!-- Product Card 7 -->
-                <div class="product-card">
-                    <img src="bila.jpg" alt="Produk 4" class="product-image">
-                    <p class="product-name">Bila</p>
-                </div>
-                <!-- Product Card 8 -->
-                <div class="product-card">
-                    <img src="the rising.jpg" alt="Produk 4" class="product-image">
-                    <p class="product-name">The Rising Star</p>
-                </div>
-                <!-- Tambahkan lebih banyak kartu produk di sini -->
-            </div>
+        <!-- Konten Utama -->
+        <main>
+            <h2>Selamat Datang di Laman Utama</h2><br><br>
+            <p>Sepatah Kata dari Tim pembuat laman...</p><br>
+            <p>Siperdi merupakan akronim dari Sistem Perpustakaan Digital.
+               Laman ini dibuat tidak untuk tujuan komersil, tapi semata-mata untuk meningkatkan
+               minat literasi anak-anak binaan, tanpa sedikitpun bermaksud merusak atau melanggar hak cipta pengarang.
+            </p><br>
+            <p>
+                Semua e-book format pdf ini didapatkan dari berbagai situs atau website yang berseliweran di 
+                laman-laman perambahan internet. Kami hanya mencoba mengumpulkannya untuk kemudian disusun dan ditampilkan 
+                secara sistematis agar lebih mudah diakses oleh siswa-siswi binaan kami.
+            </p><br>
+            <p>
+                Terakhir, jika salah seorang pengarang dari buku-buku yang kami tampilkan melihat konten laman ini 
+                dan berkenan mengizinkan buku karyanya dalam bentuk e-book ini dimanfaatkan untuk kemajuan minat literasi siswa-siswi
+                binaan kami, kami ucapkan banyak rasa terima kasih, permohonan maaf yang sebesar-besarnya,
+                dan rasa hormat yang setinggi-tingginya.
+            </p>
         </main>
     </div>
 </body>
-  </html>
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    menuToggle.addEventListener('click', () => {
+        // Toggle class 'active' saat tombol diklik
+        sidebar.classList.toggle('active');
+    });
+});     
+</script>
+</html>

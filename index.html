@@ -22,13 +22,13 @@ body {
 header {
    background-color: rgb(54, 54, 219);
     color: white;
-    padding: 10px 10px;
+    padding: 10px 20px;
     display: flex;
+    align-items: center;
     gap: 20px;
     position: sticky;
     top: 0;
-    height: 50px;
-    z-index: 100;
+    z-index:100;
 }
 
 /* Tombol toggle menu (hanya terlihat di mobile) */
@@ -126,8 +126,9 @@ main {
     height: calc(120vh - 50px);
     background-repeat:no-repeat ;
     background-size: cover;
-    color:white;
-	position: fixed;
+    color:white; 
+    position: fixed;
+    width: 100vw;
 }
 
 /* --- Responsiveness --- */
@@ -179,6 +180,53 @@ main {
       margin-top: 2px;
     }
 .gbr{height: 50px;}
+	.container{
+    margin-left: 50vw;
+    margin-top: 40vh;
+    z-index:1;
+    width: 200px;
+    height: 300px;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    box-shadow: 10px 25px 30px rgba(0,0,0,0.3);
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide 16s infinite;
+  height: 300px;
+}
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}
+img{
+    width: 100%;
+}
 </style>
 <body>
     
@@ -236,24 +284,14 @@ main {
         </aside>
         <!-- Konten Utama -->
         <main>
-            <center><img src="seragam.jpg" class="foto"/></center>
-            <h2>Selamat Datang di Laman Utama</h2><br><br>
-            <p>Sepatah Kata dari Tim pembuat laman...</p><br>
-            <p>Siperdi merupakan akronim dari Sistem Perpustakaan Digital.
-               Laman ini dibuat tidak untuk tujuan komersil, tapi semata-mata untuk meningkatkan
-               minat literasi siswa-siswi binaan, tanpa sedikitpun bermaksud merusak atau melanggar hak cipta pengarang.
-            </p><br>
-            <p>
-                Semua e-book format pdf ini didapatkan dari berbagai situs atau website yang berseliweran di 
-                laman-laman perambahan internet. Kami hanya mencoba mengumpulkannya untuk kemudian disusun dan ditampilkan 
-                secara sistematis agar lebih mudah diakses oleh siswa-siswi binaan kami.
-            </p><br>
-            <p>
-                Terakhir, jika salah seorang pengarang dari buku-buku yang kami tampilkan melihat konten laman ini 
-                dan berkenan mengizinkan buku karyanya dalam bentuk e-book ini dimanfaatkan untuk kemajuan minat literasi siswa-siswi
-                binaan kami, kami ucapkan banyak rasa terima kasih, permohonan maaf yang sebesar-besarnya,
-                dan rasa hormat yang setinggi-tingginya.
-            </p>
+            <div class="container">
+        <div class="wrapper">
+            <img src="seragam.jpg">
+            <img src="bola.jpeg">
+            <img src="math.jpg">
+            <img src="gaya.png">
+        </div>
+    </div>
         </main>
     </div>
 </body>
@@ -269,6 +307,7 @@ main {
 });     
 </script>
 </html>
+
 
 
 

@@ -41,15 +41,58 @@ header {
     display: block; 
     
 }
-
+.menu-malasngoding ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;  gap: 10px;
+	}
+	.menu-malasngoding > ul > li {
+		float: left;
+	    margin-left:70px;
+	}
+	.menu-malasngoding li a {
+		display: inline-block;
+		color: aqua;
+		text-align: center;
+		padding: 10px 12px;
+		text-decoration: none;  gap: 10px;
+	}
+	.menu-malasngoding li a:hover{
+		background-color: transparent;
+    border: 1px solid violet;
+    color: white;
+	}
+	li.dropdown {
+		display: inline-block; gap: 10px;
+	}
+	.dropdown:hover .isi-dropdown {
+		display: block;
+	}
+	.isi-dropdown a:hover {
+		color: #fff !important;
+	}
+	.isi-dropdown {
+		position: absolute;
+		display: none;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+		background-color: transparent;
+	}
+	.isi-dropdown a {
+		color: aqua!important;
+	}
+	.isi-dropdown a:hover {
+		color: white !important;
+		background: transparent !important;
+	}
 /* Wrapper Halaman */
 .page-wrapper {
     display: flex;
 }
-
 /* Sidebar Styling */
 aside#sidebar {
-    width: 250px;
+    width: 200px;
     background-color: rgb(218, 213, 213);
     color: white;
     height: calc(100vh - 50px); /* Menyesuaikan tinggi layar dikurangi tinggi header */
@@ -58,34 +101,28 @@ aside#sidebar {
     transition: transform 0.3s ease;
     overflow-y: auto;
 }
-
 aside#sidebar nav ul {
     list-style: none;
-    
 }
-
 aside#sidebar nav ul li a {
     color: rgb(19, 16, 16);
     text-decoration: none;
     padding: 10px 20px;
     display: block;
     border-bottom: 1px solid #443f3f;
-    transition: background-color 0.2s;
-    
+    transition: background-color 0.2s;  
 }
-
 aside#sidebar nav ul li a:hover {
     background-color: #e9e0e0;
 }
-
 /* Konten Utama Styling */
 main {
     flex-grow: 1;
-    padding: 20px;
+    padding: 5px;
     /* Penting: desktop content needs padding to avoid hiding under the fixed sidebar */
     margin-left: 250px; 
     background-image: url(literate.jpg);
-    height: calc(100vh - 50px);
+    height: calc(120vh - 50px);
     background-repeat:no-repeat ;
     background-size: cover;
     color:white;
@@ -109,8 +146,6 @@ aside#sidebar.active {
 main {
     margin-left: 0;
 }
-
-
 /* Desktop View (Min-width 768px) */
 @media (min-width: 768px) {
     /* Di desktop, sembunyikan tombol toggle */
@@ -122,7 +157,6 @@ main {
     aside#sidebar {
         transform: translateX(0);
     }
-
     /* Di desktop, konten utama memiliki margin untuk menghindari tumpang tindih */
     main {
         margin-left: 250px;
@@ -135,18 +169,34 @@ main {
     font-weight: bold;
     font-size: 1em;
 }
+.foto {
+      height: 90px;
+      width: 90px;
+      border-radius: 50%;
+      margin-left: 20px;
+      margin-top: 2px;
+    }
 .gbr{height: 50px;}
 </style>
 <body>
+    
     <!-- Header/Navigasi Utama -->
     <header>
         <button id="menu-toggle" aria-label="Buka Menu">☰</button>
         <h1>SIPERDI</h1>
-    </header>
+        <div class="menu-malasngoding">
+ <ul>
+			<li class="dropdown"><a href="#">Tentang</a>
+				<ul class="isi-dropdown">
+					<li><a href="laman.html">Laman</a></li>
+					<li><a href="content.html">Konten</a></li>
+				</ul>
+			</li>
 
+    </header>
     <!-- Struktur Utama Halaman -->
     <div class="page-wrapper">
-        <!-- Sidebar -->
+        <!-- Sidebar -->       
         <aside id="sidebar">
             <div class="title">Kategori Islami</div>
             <nav>
@@ -176,6 +226,7 @@ main {
         </aside>
         <!-- Konten Utama -->
         <main>
+            <center><img src="seragam.jpg" class="foto"/></center>
             <h2>Selamat Datang di Laman Utama</h2><br><br>
             <p>Sepatah Kata dari Tim pembuat laman...</p><br>
             <p>Siperdi merupakan akronim dari Sistem Perpustakaan Digital.
@@ -208,5 +259,4 @@ main {
 });     
 </script>
 </html>
-
 
